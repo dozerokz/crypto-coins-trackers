@@ -8,10 +8,10 @@ import aiohttp
 intents = discord.Intents(messages=True, guilds=True, members=True)
 bot = commands.Bot(command_prefix='!')
 
-SERVER_ID = 852528014385217596
-BOT_ID = 1027570717107167242
-BOT_TOKEN = 'MTAyNzU3MDcxNzEwNzE2NzI0Mg.G3P4YZ.dLUQxHpiuAe2z-Bp0u2soV9Fv_ZnNNrFwIW5kc'
-ETHERSCAN_API = 'SUXE7EV3WHIU797Y17616V5ZUB5P4UUSNJ'
+SERVER_ID = 123456789
+BOT_ID = 123456789
+BOT_TOKEN = 'your_bot_token'
+ETHERSCAN_API = 'your_etherscan_api_key'
 COINGEKO_API = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'
 
 url_params = {

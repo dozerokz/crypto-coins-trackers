@@ -8,9 +8,9 @@ import aiohttp
 intents = discord.Intents(messages=True, guilds=True, members=True)
 bot = commands.Bot(command_prefix='!')
 
-SERVER_ID = 852528014385217596
-BOT_ID = 1027660647565111358
-BOT_TOKEN = 'MTAyNzY2MDY0NzU2NTExMTM1OA.GFHgbG.gEI2Rn94BWa_S1YjhnqgFAKr3xsflL3cCo4qhM'
+SERVER_ID = 123456789
+BOT_ID = 123456789
+BOT_TOKEN = 'your_bot_token'
 COINGEKO_API = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
 
 

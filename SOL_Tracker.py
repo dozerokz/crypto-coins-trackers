@@ -9,9 +9,9 @@ import aiohttp
 intents = discord.Intents(messages=True, guilds=True, members=True)
 bot = commands.Bot(command_prefix='!')
 
-SERVER_ID = 852528014385217596
-BOT_ID = 1027678339684638771
-BOT_TOKEN = 'MTAyNzY3ODMzOTY4NDYzODc3MQ.GSCtjp.rI7vkjsJ1ZnWCbUFdQ3IKnbqQe7bseS8nJhtJE'
+SERVER_ID = 123456789
+BOT_ID = 123456789
+BOT_TOKEN = 'your_bot_token'
 SOL_RPC = 'https://api.mainnet-beta.solana.com/'
 COINGEKO_API = 'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd'
 
