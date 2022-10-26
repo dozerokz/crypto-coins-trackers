@@ -9,9 +9,9 @@ import aiohttp
 intents = discord.Intents(messages=True, guilds=True, members=True)
 bot = commands.Bot(command_prefix='!')
 
-SERVER_ID = 123456789  #Server with your bot
-BOT_ID = 12345678  #Your bot ID
-BOT_TOKEN = 'Your_Bot_Token' #Your Bot Token from discord applications
+SERVER_ID = 852528014385217596
+BOT_ID = 1027678339684638771
+BOT_TOKEN = 'MTAyNzY3ODMzOTY4NDYzODc3MQ.GSCtjp.rI7vkjsJ1ZnWCbUFdQ3IKnbqQe7bseS8nJhtJE'
 SOL_RPC = 'https://api.mainnet-beta.solana.com/'
 COINGEKO_API = 'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd'
 
@@ -26,29 +26,32 @@ json_data = {
 
 
 async def get_price():
-    async with aiohttp.ClientSession() as session:
-        async with session.get(COINGEKO_API) as response:
-            if response.status == 200:
-                price = await response.json()
-                return 'SOL ' + str(price['solana']['usd']) + ' $'
-            else:
-                return None
-
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(COINGEKO_API) as response:
+                if response.status == 200:
+                    price = await response.json()
+                    return 'SOL ' + str(price['solana']['usd']) + ' $'
+                else:
+                    return None
+    except: pass
 
 async def get_tps():
-    async with aiohttp.ClientSession() as session:
-        async with session.post(SOL_RPC, json=json_data) as response:
-            if response.status == 200:
-                result = await response.json()
-                result = result['result'][0]
-                numTransactions = result['numTransactions']
-                samplePeriodSecs = result['samplePeriodSecs']
-                if samplePeriodSecs == 0:
-                    return 'TPS: 0'
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(SOL_RPC, json=json_data) as response:
+                if response.status == 200:
+                    result = await response.json()
+                    result = result['result'][0]
+                    numTransactions = result['numTransactions']
+                    samplePeriodSecs = result['samplePeriodSecs']
+                    if samplePeriodSecs == 0:
+                        return 'TPS: 0'
+                    else:
+                        return 'TPS: ' + str(round(float(numTransactions)/float(samplePeriodSecs)))
                 else:
-                    return 'TPS: ' + str(round(float(numTransactions)/float(samplePeriodSecs)))
-            else:
-                return None
+                    return None
+    except: pass
 
 
 @bot.event
@@ -59,6 +62,7 @@ async def on_ready():
     while True:
         price = await get_price()
         tps = await get_tps()
+        print(price)
 
         if price is None:
             time.sleep(30)

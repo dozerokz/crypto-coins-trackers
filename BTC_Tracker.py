@@ -8,20 +8,22 @@ import aiohttp
 intents = discord.Intents(messages=True, guilds=True, members=True)
 bot = commands.Bot(command_prefix='!')
 
-SERVER_ID = 123456789  #Server with your bot
-BOT_ID = 12345678  #Your bot ID
-BOT_TOKEN = 'Your_Bot_Token' #Your Bot Token from discord applications
+SERVER_ID = 852528014385217596
+BOT_ID = 1027660647565111358
+BOT_TOKEN = 'MTAyNzY2MDY0NzU2NTExMTM1OA.GFHgbG.gEI2Rn94BWa_S1YjhnqgFAKr3xsflL3cCo4qhM'
 COINGEKO_API = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
 
 
 async def get_price():
-    async with aiohttp.ClientSession() as session:
-        async with session.get(COINGEKO_API) as response:
-            if response.status == 200:
-                price = await response.json()
-                return 'BTC ' + str(price['bitcoin']['usd']) + ' $'
-            else:
-                return None
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(COINGEKO_API) as response:
+                if response.status == 200:
+                    price = await response.json()
+                    return 'BTC ' + str(price['bitcoin']['usd']) + ' $'
+                else:
+                    return None
+    except: pass
 
 
 @bot.event
